@@ -170,6 +170,8 @@ static u8_t *const memp_bases[] = {
 #  define ETHMEM_SECTION __attribute((section("AHBSRAM1")))
 #elif defined(TARGET_LPC4088) || defined(TARGET_K64F) || defined(TARGET_RZ_A1H)
 #  define ETHMEM_SECTION 
+#elif defined(YOTTA_CFG_MBED_OS_NET_STACKS_DRIVER)
+#  define ETHMEM_SECTION 
 #endif
 
 /** This is the actual memory used by the pools (all pools in one big block). */
