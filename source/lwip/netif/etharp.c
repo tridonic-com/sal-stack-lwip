@@ -784,6 +784,8 @@ etharp_arp_input(struct netif *netif, struct eth_addr *ethaddr, struct pbuf *p)
          are already correct, we tested that before */
 
       /* return ARP reply */
+#warning "Ivan Adzic: I have removed last 4 bytes used for CRC to fix issue sent ARP packed!"
+      p->len = ((p->len) - 4); /* !TODO: remove last 4 CRC bytes before sending, dirty fix! */
       netif->linkoutput(netif, p);
     /* we are not configured? */
     } else if (ip_addr_isany(&netif->ip_addr)) {
